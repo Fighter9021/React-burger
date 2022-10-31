@@ -1,0 +1,15 @@
+.container {
+    composes: mt-1 mb-1 text text_type_digits-default from global;
+    display: "inline-flex";
+    align-items: "center";
+    justify-content: "center";
+    gap: "10px";
+}
+
+.container_large {
+    composes: text text_type_digits-medium from global;
+    display: "inline-flex";
+    align-items: "center";
+    justify-content: "center";
+    gap: "10px";
+}

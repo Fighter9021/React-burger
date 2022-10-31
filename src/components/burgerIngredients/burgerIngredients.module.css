@@ -1,0 +1,15 @@
+.container {
+    width: 600px;
+}
+
+.ingredients {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.scrollable {
+    height: 700px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
