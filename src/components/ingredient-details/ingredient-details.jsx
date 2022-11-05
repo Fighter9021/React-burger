@@ -9,7 +9,7 @@ export default function IngredientDetails(props) {
 		<div className={styles.container}>
 			<h1 className={styles.title}>Детали ингредиента</h1>
 			<div className={styles.ingredient}>
-				<img src={props.ingredient.image_large}/>
+				<img src={props.ingredient.image_large} alt="ingredient"/>
 				<h2 className={styles.name}>{props.ingredient.name}</h2>
 				<ul className={styles.calories}>
                     <IngredientCalories name="Калории, ккал" value={props.ingredient.calories}/>

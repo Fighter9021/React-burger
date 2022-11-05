@@ -29,7 +29,7 @@ export default function Constructor() {
             .finally(() => {
                 setIsLoaded(true);
             });
-	}, [])
+	}, [url])
 
     const hasBun = React.useMemo(
         () => {

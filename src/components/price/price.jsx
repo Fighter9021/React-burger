@@ -13,5 +13,6 @@ export default function Price(props) {
 }
 
 Price.propTypes = {
-    large: PropTypes.bool
+    large: PropTypes.bool,
+    price: PropTypes.number
 }

@@ -4,24 +4,23 @@ import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 import PropTypes from 'prop-types';
 import styles from './modal.module.css'
+import { ESC_KEYCODE } from '../../utils/constants';
 
 export default function Modal(props) {
     const close = () => {
         props.setModal({isVisible: false, content: null});
     }
 
-    const closeByEsc = (e) => {
-        if (e.keyCode === 27) {
-            close();
-        }
-    }
-
-    React.useEffect(() => {
-		window.addEventListener("keydown", closeByEsc);
-		return () => {
-			window.removeEventListener("keydown", closeByEsc);
-		}
-	});
+    React.useEffect(
+        () => {
+            const closeByEsc = (e) => {(e.keyCode === ESC_KEYCODE) && close()};
+		    window.addEventListener("keydown", closeByEsc);
+		    return () => {
+			    window.removeEventListener("keydown", closeByEsc);
+		    }
+	    }, 
+        []
+    );
 
     return ReactDOM.createPortal(
         (
