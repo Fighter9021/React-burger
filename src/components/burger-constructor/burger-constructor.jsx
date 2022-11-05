@@ -1,8 +1,9 @@
 import React from 'react';
-import { ConstructorElement, Button} from '@ya.praktikum/react-developer-burger-ui-components';
+import { ConstructorElement, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../order-details/order-details';
 import Price from '../price/price';
 import PropTypes from 'prop-types';
+import { IngredientType } from '../../prop-types.js';
 import styles from './burger-constructor.module.css';
 
 export default function BurgerConstructor(props) {
@@ -77,21 +78,7 @@ export default function BurgerConstructor(props) {
 }
 
 BurgerConstructor.propTypes = {
-    ingredients: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-		name: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		proteins: PropTypes.number.isRequired,
-		fat: PropTypes.number.isRequired,
-		carbohydrates: PropTypes.number.isRequired,
-		calories: PropTypes.number.isRequired,
-		price: PropTypes.number.isRequired,
-		image: PropTypes.string.isRequired,
-		image_mobile: PropTypes.string.isRequired,
-		image_large: PropTypes.string.isRequired,
-		__v: PropTypes.number,
-        uniqId: PropTypes.string
-    })).isRequired,
+    ingredients: PropTypes.arrayOf(IngredientType.isRequired).isRequired,
     removeIngredient: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired
 };

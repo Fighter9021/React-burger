@@ -2,6 +2,7 @@ import React from 'react';
 import IngredientCalories from '../ingredient-calories/ingredient-calories';
 import PropTypes from 'prop-types';
 import styles from './ingredient-details.module.css'
+import { IngredientType } from '../../prop-types';
 
 export default function IngredientDetails(props) {
     return (
@@ -22,18 +23,5 @@ export default function IngredientDetails(props) {
 }
 
 IngredientDetails.propTypes = {
-	ingredient: PropTypes.shape({
-		_id: PropTypes.string.isRequired,
-		name: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		proteins: PropTypes.number.isRequired,
-		fat: PropTypes.number.isRequired,
-		carbohydrates: PropTypes.number.isRequired,
-		calories: PropTypes.number.isRequired,
-		price: PropTypes.number.isRequired,
-		image: PropTypes.string.isRequired,
-		image_mobile: PropTypes.string.isRequired,
-		image_large: PropTypes.string.isRequired,
-		__v: PropTypes.number
-	}).isRequired
+	ingredient: PropTypes.shape({IngredientType}).isRequired
 };
