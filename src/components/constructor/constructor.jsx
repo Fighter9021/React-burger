@@ -22,6 +22,12 @@ export default function Constructor() {
             .then(checkReponse)
             .then((result) => {
                 setIngredients(result.data);
+                setSelectedIngredients([
+                    {...result.data[0], uniqId: getUniqId()},
+                    {...result.data[8], uniqId: getUniqId()}, 
+                    {...result.data[3], uniqId: getUniqId()}, 
+                    {...result.data[4], uniqId: getUniqId()},
+                    {...result.data[6], uniqId: getUniqId()}]);
             })
             .catch((error) => {
                 setError(error);

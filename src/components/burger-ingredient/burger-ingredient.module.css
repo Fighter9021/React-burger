@@ -1,6 +1,7 @@
 .container {
     composes: ml-4 mb-8 from global;
     width: 272px;
+    cursor: pointer;
 }
 
 .counter {
