@@ -1,3 +1,4 @@
+import React from 'react';
 import { ConstructorElement, Button} from '@ya.praktikum/react-developer-burger-ui-components';
 import OrderDetails from '../order-details/order-details';
 import Price from '../price/price';
@@ -6,69 +7,68 @@ import styles from './burger-constructor.module.css';
 
 export default function BurgerConstructor(props) {
 
-    const getBun = () => {
-        return (
-            props.ingredients.find(x => x.type === "bun")
-        );
-    }
+    const bun = React.useMemo(
+        () => {
+            return props.ingredients.find(x => x.type === "bun")
+        },
+        [props.ingredients]
+    );
 
-    const renderBun = (bun, type, extraClass) => {
-        return (
-            <ConstructorElement
-                text={bun.name}
-                type={type}
-                isLocked={true}
-                price={bun.price}
-                thumbnail={bun.image_mobile}
-                extraClass={extraClass}
-            />
-        );
-    }
+    const ingredients = React.useMemo(
+        () => {
+            return props.ingredients.filter(x => x.type !== "bun")
+        },
+        [props.ingredients]
+    );
 
-    const renderTopBun = () => {
-        const bun = getBun();
+    const totalPrice = React.useMemo(
+        () => {
+            return props.ingredients.reduce((sum, element) => sum + element.price, 0)
+        },
+        [props.ingredients]
+    );
 
-        return (
-            <>
-            {(bun !== undefined) && renderBun(bun, "top", "mb-4")}
-            </>
-        );
-    }
-
-    const renderBottomBun = () => {
-        const bun = getBun();
-
-        return (
-            <>
-            {(bun !== undefined) && renderBun(bun, "bottom", "mt-4")}
-            </>
-        );
-    }
-
-    const renderIngredient = (ingredient) => {
-        return (
-            <ConstructorElement
-                key={ingredient.uniqId}
-                text={ingredient.name}
-                price={ingredient.price}
-                thumbnail={ingredient.image_mobile}
-                handleClose={() => props.removeIngredient(ingredient.uniqId)}
-            />
-        );
+    const handleOrderButtonClick = () => {
+        props.setModal({
+            isVisible: true, 
+            content: <OrderDetails/>
+        });
     }
 
     return (
-        <div className={["mt-25", styles.container].join(' ')}>
-            {renderTopBun()}
+        <div className={styles.container}>
+            {bun && 
+            <ConstructorElement
+                text={bun.name + " (верх)"}
+                type="top"
+                isLocked={true}
+                price={bun.price}
+                thumbnail={bun.image_mobile}
+                extraClass="mb-4"
+            />}
             <div className={styles.constructor}>
-                {props.ingredients.map((ingredient) => (
-                    (ingredient.type !== "bun") && renderIngredient(ingredient)
+                {ingredients.map((ingredient) => (
+                    <ConstructorElement
+                        key={ingredient.uniqId}
+                        text={ingredient.name}
+                        price={ingredient.price}
+                        thumbnail={ingredient.image_mobile}
+                        handleClose={() => props.removeIngredient(ingredient.uniqId)}
+                    />
                 ))}
             </div>
-            {renderBottomBun()}
+            {bun && 
+            <ConstructorElement
+                text={bun.name + " (низ)"}
+                type="bottom"
+                isLocked={true}
+                price={bun.price}
+                thumbnail={bun.image_mobile}
+                extraClass="mt-4"
+            />}
             <div className={styles.order}>
-                <Price large={true} price={props.ingredients.reduce((sum, element) => sum + element.price, 0)}/>
-                <Button type="primary" size="large" htmlType="button" onClick={() => props.setModal({isVisible: true, content: <OrderDetails/>})}>
+                <Price large={true} price={totalPrice}/>
+                <Button type="primary" size="large" htmlType="button" onClick={handleOrderButtonClick}>
                     Оформить заказ
                 </Button>
             </div>
