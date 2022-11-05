@@ -1,11 +1,16 @@
 .container {
     composes: ml-4 mb-8 from global;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 272px;
     cursor: pointer;
 }
 
 .counter {
     position: relative;
+    align-self: flex-end;
 }
 
 .image {

@@ -27,7 +27,9 @@ export default function Constructor() {
                     {...result.data[8], uniqId: getUniqId()}, 
                     {...result.data[3], uniqId: getUniqId()}, 
                     {...result.data[4], uniqId: getUniqId()},
-                    {...result.data[6], uniqId: getUniqId()}]);
+                    {...result.data[6], uniqId: getUniqId()},
+                    {...result.data[7], uniqId: getUniqId()},
+                    {...result.data[7], uniqId: getUniqId()},]);
             })
             .catch((error) => {
                 setError(error);

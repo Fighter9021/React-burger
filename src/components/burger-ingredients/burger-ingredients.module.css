@@ -12,7 +12,7 @@
 }
 
 .scrollable {
-    max-height: 480px;
+    max-height: 700px;
     overflow-y: scroll;
     scrollbar-width: thin;
     scroll-behavior: smooth;
