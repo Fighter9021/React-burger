@@ -3,6 +3,8 @@ import BurgerIngredients from '../burger-ingredients/burger-ingredients';
 import BurgerConstructor from '../burger-constructor/burger-constructor';
 import Modal from '../modal/modal';
 import styles from './constructor.module.css';
+import { BASE_API_URL } from '../../utils/constants';
+import { checkReponse } from '../../utils/fetchHelper';
 
 export default function Constructor() {
     const [error, setError] = React.useState(null);
@@ -12,18 +14,19 @@ export default function Constructor() {
     const [selectedIngredients, setSelectedIngredients] = React.useState([]);
     const [modal, setModal] = React.useState({ isVisible: false, content: null});
 
-    const url = "https://norma.nomoreparties.space/api/ingredients";
+    const url = `${BASE_API_URL}/ingredients`;
 
     React.useEffect(() => {
         fetch(url)
-            .then(res => res.json())
+            .then(checkReponse)
             .then((result) => {
-                setIsLoaded(true);
                 setIngredients(result.data);
             })
             .catch((error) => {
-                setIsLoaded(true);
                 setError(error);
+            })
+            .finally(() => {
+                setIsLoaded(true);
             });
 	}, [])
 
@@ -33,7 +36,6 @@ export default function Constructor() {
 
     const hasBun = React.useMemo(
         () => {
-            console.log(typeof(selectedIngredients.find(x => x.type === "bun")) !== 'undefined');
             return typeof(selectedIngredients.find(x => x.type === "bun")) !== 'undefined';
         }, 
         [selectedIngredients]
