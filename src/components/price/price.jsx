@@ -1,15 +1,17 @@
 import React from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
+import styles from './price.module.css'
 
 export default function Price(props) {
-    const containerClassName = (props.large) 
-    ? "text text_type_digits-medium" 
-    : "mt-1 mb-1 text text_type_digits-default";
-
     return (
-        <span className={containerClassName} style={{display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10}}>
+        <span className={(props.large) ? styles.containerLarge : styles.container}>
             {props.price}
             <CurrencyIcon type="primary"/>
         </span>
-    )
+    );
+}
+
+Price.propTypes = {
+    large: PropTypes.bool
 }

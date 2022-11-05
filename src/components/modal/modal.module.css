@@ -1,0 +1,17 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(28, 28, 33);
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	border-radius: 40px;
+}
+
+.close {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    cursor: pointer;
+}
