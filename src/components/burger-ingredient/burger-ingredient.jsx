@@ -8,10 +8,6 @@ import IngredientDetails from '../ingredient-details/ingredient-details';
 
 
 export default function BurgerIngredient(props) {    
-    const addIngredient = () => {
-        props.addIngredient(props.ingredient);
-    }
-
     const handleIngredientDetailsClick = () => {
         props.setModal({
             isVisible: true, 
