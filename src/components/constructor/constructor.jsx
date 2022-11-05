@@ -5,6 +5,7 @@ import Modal from '../modal/modal';
 import styles from './constructor.module.css';
 import { BASE_API_URL } from '../../utils/constants';
 import { checkReponse } from '../../utils/fetchHelper';
+import { getUniqId } from '../../utils/common';
 
 export default function Constructor() {
     const [error, setError] = React.useState(null);
@@ -29,10 +30,6 @@ export default function Constructor() {
                 setIsLoaded(true);
             });
 	}, [])
-
-    const getUniqId = () => {
-        return "id" + Math.random().toString(16).slice(2);
-    }
 
     const hasBun = React.useMemo(
         () => {
