@@ -6,19 +6,19 @@ export default function AppHeader() {
     return(
         <header className={styles.header}>
             <nav className={styles.navigation}>
-                <span className={styles.constructor}>
+                <a href="#" className={styles.constructor}>
                     <BurgerIcon type="primary" />
                     Конструктор
-                </span>
-                <span className={styles.order}>
+                </a>
+                <a href="#" className={styles.order}>
                     <ListIcon type="secondary" />
                     Лента заказов
-                </span>
+                </a>
                 <Logo />
-                <span className={styles.personal}>
+                <a href="#" className={styles.personal}>
                     <ProfileIcon type="secondary" />
                     Личный кабинет
-                </span>
+                </a>
             </nav>
         </header>
     );

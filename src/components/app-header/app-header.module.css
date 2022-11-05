@@ -19,6 +19,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .order {
@@ -27,6 +29,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  text-decoration: none;
 }
 
 .personal {
@@ -35,4 +38,5 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  text-decoration: none;
 }
