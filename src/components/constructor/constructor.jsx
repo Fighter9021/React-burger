@@ -31,11 +31,17 @@ export default function Constructor() {
         return "id" + Math.random().toString(16).slice(2);
     }
 
+    const hasBun = React.useMemo(
+        () => {
+            console.log(typeof(selectedIngredients.find(x => x.type === "bun")) !== 'undefined');
+            return typeof(selectedIngredients.find(x => x.type === "bun")) !== 'undefined';
+        }, 
+        [selectedIngredients]
+    );
+
     const addIngredient = (ingredient) => {
-        if (ingredient.type === "bun" && selectedIngredients.find(x => x.type === "bun")) {
+        if (!(ingredient.type === "bun" && hasBun)) {
             // если добавляемый ингредиент - булка, и среди добавленных уже есть булка, то ничего не добавляем
-        }
-        else {
             setSelectedIngredients([...selectedIngredients, {...ingredient, uniqId: getUniqId()}]);
         }
     }
