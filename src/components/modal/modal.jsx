@@ -5,9 +5,9 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 import PropTypes from 'prop-types';
 import styles from './modal.module.css'
 
-export default function Modal({children, setModal}) {
+export default function Modal(props) {
     const close = () => {
-        setModal({isVisible: false, content: null});
+        props.setModal({isVisible: false, content: null});
     }
 
     const closeByEsc = (e) => {
@@ -31,13 +31,15 @@ export default function Modal({children, setModal}) {
                     <span className={styles.close} onClick={close}>
                         <CloseIcon type="primary"/>
                     </span>
-                    {children}
+                    {props.children}
                 </div>
             </>
         ),
-        document.getElementById("modals")
+        wrapper
     );
 }
+
+const wrapper = document.getElementById("modals");
 
 Modal.propTypes = {
     children: PropTypes.element.isRequired,

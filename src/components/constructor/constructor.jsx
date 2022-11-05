@@ -60,7 +60,10 @@ export default function Constructor() {
                 <BurgerIngredients ingredients={ingredients} selectedIngredients={selectedIngredients} setModal={setModal} addIngredient={addIngredient}/>
                 <BurgerConstructor ingredients={selectedIngredients} setModal={setModal} removeIngredient={removeIngredient}/>
             </div>
-            {modal.isVisible && <Modal children={modal.content} setModal={setModal}/>}
+            {modal.isVisible && 
+            <Modal setModal={setModal}>
+                {modal.content}
+            </Modal>}
         </>
         );
     }
