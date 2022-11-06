@@ -6,6 +6,7 @@ import styles from './constructor.module.css';
 import { BASE_API_URL } from '../../utils/constants';
 import { checkReponse } from '../../utils/fetchHelper';
 import { getUniqId } from '../../utils/common';
+import { BURGER_CONSTRUCTOR_INGREDIENTS_INDEXES } from '../../utils/constants';
 
 export default function Constructor() {
     const [error, setError] = React.useState(null);
@@ -22,14 +23,11 @@ export default function Constructor() {
             .then(checkReponse)
             .then((result) => {
                 setIngredients(result.data);
-                setSelectedIngredients([
-                    {...result.data[0], uniqId: getUniqId()},
-                    {...result.data[8], uniqId: getUniqId()}, 
-                    {...result.data[3], uniqId: getUniqId()}, 
-                    {...result.data[4], uniqId: getUniqId()},
-                    {...result.data[6], uniqId: getUniqId()},
-                    {...result.data[7], uniqId: getUniqId()},
-                    {...result.data[7], uniqId: getUniqId()},]);
+                const burgerConstructorIngredients = BURGER_CONSTRUCTOR_INGREDIENTS_INDEXES.map((index) => ({
+                    ...result.data[index],
+                    uniqId: getUniqId(),
+                  }));
+                setSelectedIngredients(burgerConstructorIngredients);
             })
             .catch((error) => {
                 setError(error);
