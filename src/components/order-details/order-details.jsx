@@ -1,6 +1,6 @@
 import React from 'react';
-import { CheckMarkIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import styles from './order-details.module.css';
+import orderCreated from '../../images/OrderCreated.png';
 
 export default function OrderDetails() {
 	return (
@@ -8,7 +8,7 @@ export default function OrderDetails() {
 			<h1 className={styles.orderId}>034536</h1>
 			<p className={styles.orderTitle}>идентификатор заказа</p>
 			<div className={styles.icon}>
-                <CheckMarkIcon type="primary" />
+                <img src={orderCreated} alt="Order created"/>
             </div>
 			<p className={styles.orderStatus}>Ваш заказ начали готовить</p>
 			<p className={styles.orderInformation}>Дождитесь готовности на орбитальной станции</p>
