@@ -24,7 +24,15 @@ export default function BurgerConstructor(props) {
 
     const totalPrice = React.useMemo(
         () => {
-            return props.ingredients.reduce((sum, element) => sum + element.price, 0)
+            const result = props.ingredients.reduce((sum, element) => sum + element.price, 0);
+            const bun = props.ingredients.filter(x => x.type === "bun");
+            if (bun.length > 0)
+            {
+                // Если среди ингредиентов есть булка, то добавляем ее цену еще раз 
+                // (считаем отдельно верхнюю и нижнюю)
+                return result + bun[0].price;
+            }
+            return result;
         },
         [props.ingredients]
     );
