@@ -1,0 +1,15 @@
+.container {
+    composes: mb-15 from global;
+    list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.title {
+    composes: text text_type_main-default text_color_inactive from global;
+}
+
+.value {
+    composes: text text_type_digits-default text_color_inactive mt-2 from global;
+}

@@ -1,0 +1,21 @@
+.container {
+    composes: mt-25 from global;
+    width: 600px;
+}
+
+.constructor {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 460px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+.order {
+    composes: mt-10 mr-4 from global;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 40px;
+}

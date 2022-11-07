@@ -1,0 +1,43 @@
+.header {
+  composes: pt-4 pb-4 from global;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(29, 28, 33, 29);
+}
+
+.navigation {
+  width: 1240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.constructor {
+  composes: mr-2 ml-5 pr-5 text text_type_main-default from global;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.order {
+  composes: mr-2 ml-5 pr-5 text text_type_main-default text_color_inactive from global;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.personal {
+  composes: mr-5 ml-5 text text_type_main-default text_color_inactive from global;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+}
